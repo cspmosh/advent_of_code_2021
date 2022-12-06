@@ -6,8 +6,8 @@ describe SeaFloor do
   describe "#move_cucumbers" do
     context "when there is something to move" do
       it "moves the east-facing cucumbers to the right" do
-        sea_floor.add_cucumbers("..>".split(""))
-        sea_floor.add_cucumbers(">..".split(""))
+        sea_floor.add_cucumbers("..>")
+        sea_floor.add_cucumbers(">..")
 
         has_open_spaces = sea_floor.move_cucumbers
 
@@ -17,8 +17,8 @@ describe SeaFloor do
       end
 
       it "moves the south-facing cucumbers down" do
-        sea_floor.add_cucumbers("v..".split(""))
-        sea_floor.add_cucumbers("..v".split(""))
+        sea_floor.add_cucumbers("v..")
+        sea_floor.add_cucumbers("..v")
 
         has_open_spaces = sea_floor.move_cucumbers
 
@@ -31,8 +31,8 @@ describe SeaFloor do
     context "when there are some blocking cucumbers" do
       context "when the cucumber is facing east" do
         it "prevents the blocked cucumber from moving to the right" do
-          sea_floor.add_cucumbers(".>>".split(""))
-          sea_floor.add_cucumbers(">..".split(""))
+          sea_floor.add_cucumbers(".>>")
+          sea_floor.add_cucumbers(">..")
 
           has_open_spaces = sea_floor.move_cucumbers
 
@@ -44,8 +44,8 @@ describe SeaFloor do
 
       context "when the cucumber is facing south" do
         it "prevents the blocked cucumber from moving down" do
-          sea_floor.add_cucumbers("v..".split(""))
-          sea_floor.add_cucumbers("..>".split(""))
+          sea_floor.add_cucumbers("v..")
+          sea_floor.add_cucumbers("..>")
 
           has_open_spaces = sea_floor.move_cucumbers
 
@@ -58,7 +58,7 @@ describe SeaFloor do
 
     context "when there is nothing to move" do
       it "returns false" do
-        sea_floor.add_cucumbers(">>>".split(""))
+        sea_floor.add_cucumbers(">>>")
 
         has_open_spaces = sea_floor.move_cucumbers
 
@@ -69,15 +69,15 @@ describe SeaFloor do
 
   describe "#continuously_move_cucumbers" do
     it "returns the first step on which no cucumbers move" do
-      sea_floor.add_cucumbers("v...>>.vv>".split(""))
-      sea_floor.add_cucumbers(".vv>>.vv..".split(""))
-      sea_floor.add_cucumbers(">>.>v>...v".split(""))
-      sea_floor.add_cucumbers(">>v>>.>.v.".split(""))
-      sea_floor.add_cucumbers("v>v.vv.v..".split(""))
-      sea_floor.add_cucumbers(">.>>..v...".split(""))
-      sea_floor.add_cucumbers(".vv..>.>v.".split(""))
-      sea_floor.add_cucumbers("v.v..>>v.v".split(""))
-      sea_floor.add_cucumbers("....v..v.>".split(""))
+      sea_floor.add_cucumbers("v...>>.vv>")
+      sea_floor.add_cucumbers(".vv>>.vv..")
+      sea_floor.add_cucumbers(">>.>v>...v")
+      sea_floor.add_cucumbers(">>v>>.>.v.")
+      sea_floor.add_cucumbers("v>v.vv.v..")
+      sea_floor.add_cucumbers(">.>>..v...")
+      sea_floor.add_cucumbers(".vv..>.>v.")
+      sea_floor.add_cucumbers("v.v..>>v.v")
+      sea_floor.add_cucumbers("....v..v.>")
 
       steps = sea_floor.continuously_move_cucumbers
 

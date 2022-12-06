@@ -6,7 +6,7 @@ class SeaFloor
   end
 
   def add_cucumbers(cucumbers)
-    @region << cucumbers
+    @region << cucumbers.split("")
   end
 
   def to_s
